@@ -1,9 +1,11 @@
+import { UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 
-const Navbar = async () => {
-    const {userId} = await.auth();
-    const isAuth = !!userId;
 
+const Navbar = async () => {
+    const {userId}= await auth();
+    const isAuth= !!userId;
 
     return <div>
         <ul className="flex justify-between m-10 items-center" >
@@ -19,19 +21,29 @@ const Navbar = async () => {
                   <Link href="/sign-in" >
                 <li>Login</li>
             </Link>
-            <Link href="/aign-up" >
+            <Link href="/sign-up" >
                 <li>Sign Up</li>
             </Link>
             </>
 
             ): (
+                <>
+                
+
+                <Link href="/profile" >
+                <li>Profile</li>
+            </Link>
+            <li> 
+             
+                <UserButton afterSignOutUrl="/" />
+            </li>
+
+                </>
 
             ) }
          
-            <Link href="/profile" >
-                <li>Profile</li>
-            </Link>
-            <li></li>
+            
+            
            </div>
         </ul>
     </div>;
