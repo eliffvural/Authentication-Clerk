@@ -2,7 +2,6 @@ import { UserButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 
-
 const Navbar = async () => {
     const {userId}= await auth();
     const isAuth= !!userId;
