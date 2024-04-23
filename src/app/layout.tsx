@@ -1,4 +1,4 @@
-import { ClerkProvider } from '@clerk/nextjs';
+import { ClerkLoaded, ClerkLoading, ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from './components/Navbar';
@@ -23,12 +23,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className='mx-36 text-2xl' >
+          <ClerkLoading>
+              <div className='flex flex-col items-center text-center mt-32' >
+                LOADING...
+              </div>
         <Navbar/>
-          <div className='flex flex-col items-center text-center mt-32' >
-            
-         {children}
+        </ClerkLoading>
+            <ClerkLoaded>
+            <Navbar/>
+            {children}
+            </ClerkLoaded>
+         
         </div>
-        </div>
+        
         
         </body>
     </html>
