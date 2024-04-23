@@ -27,7 +27,7 @@ export default function RootLayout({
               <div className='flex flex-col items-center text-center mt-32' >
                 LOADING...
               </div>
-        <Navbar/>
+        
         </ClerkLoading>
             <ClerkLoaded>
             <Navbar/>
