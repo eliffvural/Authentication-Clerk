@@ -9,7 +9,9 @@ const ForgotPasswordPage: NextPage = () => {
   const [successfulCreation, setSuccessfulCreation] = useState(false);
   const [secondFactor, setSecondFactor] = useState(false);
   const [error, setError] = useState('');
- 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [code, setCode] = useState(''); 
   const router = useRouter();
   const { isSignedIn } = useAuth();
   const { isLoaded, signIn, setActive } = useSignIn();
@@ -77,6 +79,8 @@ const ForgotPasswordPage: NextPage = () => {
   }
  
   return (
+
+    
     <div
       style={{
         margin: 'auto',
@@ -100,6 +104,7 @@ const ForgotPasswordPage: NextPage = () => {
               placeholder='e.g john@doe.com'
               value={email}
               onChange={e => setEmail(e.target.value)}
+              style={{color: 'black'}}
             />
  
             <button>Send password reset code</button>
@@ -114,17 +119,20 @@ const ForgotPasswordPage: NextPage = () => {
               type='password'
               value={password}
               onChange={e => setPassword(e.target.value)}
+              style={{color: 'black'}}
             />
  
             <label htmlFor='password'>Enter the password reset code that was sent to your email</label>
             <input
-              type='text'
+              type='number'
               value={code}
               onChange={e => setCode(e.target.value)}
+              style={{color: 'black'}}
             />
  
             <button>Reset</button>
             {error && <p>{error}</p>}
+            
           </>
         )}
  
